@@ -1,23 +1,19 @@
 'use strict';
 
 const Hapi = require('hapi');
-const mongojs = require('mongojs');
+let Mongoose = require('mongoose');
+const config = require('./config');
+const Routes = require('./routes/recipe');
 
-// Create a server with a host and port
+Mongoose.Promise = global.Promise;
+Mongoose.connect('mongodb://' + config.database.host + '/' + config.database.db);
+
 const server = new Hapi.Server();
 server.connection({
-    port: 3000
+    host: config.server.host,
+    port: config.server.port
 });
-
-//Connect to db
-server.app.db = mongojs('recipes-mongo', ['recipes']);
-
-//Load plugins and start server
-server.register([require('./routes/recipes')], err => {
-    if (err) console.log(`Error loading plugins: ${err}`);
-
-    // Start the server
-    server.start(() => {
-        console.log('Server running at:', server.info.uri);
-    });
+server.route(Routes.endpoints);
+server.start(() => {
+    console.log('Server started ', server.info.uri);
 });
