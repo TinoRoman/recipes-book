@@ -9,7 +9,13 @@ Mongoose.connect('mongodb://' + config.database.host + '/' + config.database.db)
 const server = new Hapi.Server();
 server.connection({
     host: config.server.host,
-    port: config.server.port
+    port: config.server.port,
+    routes: {
+        cors: {
+            origin: ['*'],
+            credentials: true
+        }
+    }
 });
 server.route(endpoints);
 server.start(() => {

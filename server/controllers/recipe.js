@@ -95,8 +95,8 @@ export const update = {
             await Recipe.update({ id: id }, { $set: previous });
 
             //save new version
-            await recipe.save();
-            reply().code(204);
+            let _recipe = await recipe.save();
+            reply(cleanReply(_recipe));
         } catch (err) {
             return reply(Boom.wrap(err, SERVER_ERROR));
         }
