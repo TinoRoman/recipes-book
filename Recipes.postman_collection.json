@@ -1,0 +1,104 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Recipes",
+		"_postman_id": "0b38d266-d03f-9b39-49a2-5aa2e6ff41ea",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all recipes",
+			"request": {
+				"url": "http://localhost:3000/recipes",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Get all recipes"
+			},
+			"response": []
+		},
+		{
+			"name": "Get recipe by id",
+			"request": {
+				"url": "http://localhost:3000/recipes/91cf4630-2150-11e7-9b97-b9fbef60a7d0",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get recipe by id"
+			},
+			"response": []
+		},
+		{
+			"name": "Get specific recipe version",
+			"request": {
+				"url": "http://localhost:3000/recipes/91cf4630-2150-11e7-9b97-b9fbef60a7d0/1492201558548",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get specific recipe version"
+			},
+			"response": []
+		},
+		{
+			"name": "Create new recipe",
+			"request": {
+				"url": "http://localhost:3000/recipes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Mapled Ham\",\n\t\"description\": \"Ham with pineapples, cloves, and a sweet maple syrup sauce - it's a holiday classic!\"\n}"
+				},
+				"description": "Create new recipe"
+			},
+			"response": []
+		},
+		{
+			"name": "Save new reciepe version",
+			"request": {
+				"url": "http://localhost:3000/recipes/1f9a6430-2094-11e7-b40a-65c495a1da68",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Mapled Ham version 2\",\n\t\"description\": \"Ham with pineapples, cloves, and a sweet maple syrup sauce - it's a holiday classic!\"\n}"
+				},
+				"description": "Save new reciepe version"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete recipe by id",
+			"request": {
+				"url": "http://localhost:3000/recipes/2e147650-2151-11e7-afc2-39b76af4c943",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Delete recipe by id"
+			},
+			"response": []
+		}
+	]
+}
