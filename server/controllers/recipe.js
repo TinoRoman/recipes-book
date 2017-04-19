@@ -87,12 +87,12 @@ export const update = {
 
         try {
             //get previous version
-            let previous = await Recipe.findOne({ id: id });
+            let previous = await Recipe.findOne({ id: id, latest: true });
             if (!previous) return reply(Boom.notFound());
 
             //resave previous
             previous.latest = false;
-            await Recipe.update({ id: id }, { $set: previous });
+            await Recipe.update({ id: previous.id, latest: true }, { $set: previous });
 
             //save new version
             let _recipe = await recipe.save();
